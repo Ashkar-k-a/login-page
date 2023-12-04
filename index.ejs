@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script
+      src="https://kit.fontawesome.com/42340d92e3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-box">
+        <h1 id="formHead">Log In</h1>
+        <form class="login-container" action="/route/login" method="POST">
+          <div class="input-group">
+            <div class="input-field" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Username" name="username" />
+              <span id="usernameError" class="error"></span>
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" />
+              <span id="passwordError" class="error"></span>
+            </div>
+            <div class="btn-field">
+              <button type="submit" id="signupBtn">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      const form = document.querySelector("form");
+      const username = document.querySelector("input[type=text]");
+      const password = document.querySelector("input[type=password]");
+
+      form.addEventListener("submit", onSubmitFunction);
+
+      function onSubmitFunction(event) {
+        if (username.value === "" && password.value === "") {
+          document.getElementById("UsernameError").innerHTML =
+            "Username is required";
+          document.getElementById("PasswordError").innerHTML =
+            "Password is required";
+          event.preventDefault();
+          return false;
+        }
+        if (username.value === "") {
+          document.getElementById("UsernameError").innerHTML =
+            "username is required";
+          event.preventDefault();
+          return false;
+        }
+        if (password.value === "") {
+          document.getElementById("PasswordError").innerHTML =
+            "password is required";
+          event.preventDefault();
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
